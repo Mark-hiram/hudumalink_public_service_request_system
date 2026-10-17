@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HudumaLink public service request portal">
+  <title>HudumaLink | Public Service Requests</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" data-view="home" aria-label="HudumaLink home">
+      <span class="brand-mark">H</span>
+      <span>Huduma<span class="brand-light">Link</span><small>PUBLIC SERVICE PORTAL</small></span>
+    </a>
+    <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">☰</button>
+    <nav id="nav">
+      <button class="nav-link active" data-view="home">Home</button>
+      <button class="nav-link" data-view="track">Track a request</button>
+      <button class="nav-link" data-view="dashboard" id="dashboardNav" hidden>Dashboard</button>
+      <button class="nav-link" data-view="help">Help</button>
+      <button class="btn btn-outline" data-view="auth" id="signInNav">Sign in</button>
+      <button class="btn btn-primary" data-view="report" id="reportNav">Report an issue <span>↗</span></button>
+      <button class="btn btn-outline" id="signOutBtn" hidden>Sign out</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="view active" id="view-home">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="pulse"></span> YOUR COMMUNITY, CONNECTED</div>
+          <h1>Your community.<br><span>Your voice.</span><br>Better services.</h1>
+          <p class="hero-description">Report local issues and follow every update, from submission to resolution. Together, we can make public services work better for everyone.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-large" data-view="report">Submit a request <span>→</span></button>
+            <button class="btn btn-soft btn-large" data-view="track">Track a request</button>
+          </div>
+          <div class="trust-note"><span class="check">✓</span> Simple. Transparent. Community-focused.</div>
+        </div>
+        <div class="hero-visual">
+          <div class="visual-circle circle-one"></div><div class="visual-circle circle-two"></div>
+          <div class="city-card">
+            <div class="city-sky"><span class="sun"></span><span class="cloud cloud-a"></span><span class="cloud cloud-b"></span></div>
+            <div class="city-building building-a"></div><div class="city-building building-b"></div><div class="city-building building-c"></div>
+            <div class="street"></div>
+            <div class="streetlight"><i></i><b></b></div>
+            <div class="tree tree-a"><i></i><b></b></div><div class="tree tree-b"><i></i><b></b></div>
+            <div class="report-card"><span class="report-icon">✓</span><div><strong>Issue reported</strong><small>Your report makes a difference</small></div><span class="tiny-arrow">↗</span></div>
+            <div class="location-chip">⌖ &nbsp; Your neighbourhood</div>
+          </div>
+          <div class="floating-badge"><span>✦</span><div><strong>Community first</strong><small>Every report matters</small></div></div>
+        </div>
+      </div>
+      <div class="stats-grid" id="homeStats">
+        <div class="stat-card"><span class="stat-icon teal">▤</span><div><small>Requests received</small><strong id="statTotal">0</strong></div><span class="stat-foot">All reports</span></div>
+        <div class="stat-card"><span class="stat-icon green">✓</span><div><small>Resolved</small><strong id="statResolved">0</strong></div><span class="stat-foot">Completed cases</span></div>
+        <div class="stat-card"><span class="stat-icon amber">◷</span><div><small>In progress</small><strong id="statProgress">0</strong></div><span class="stat-foot">Being worked on</span></div>
+        <div class="stat-card"><span class="stat-icon blue">◉</span><div><small>Open requests</small><strong id="statOpen">0</strong></div><span class="stat-foot">Awaiting action</span></div>
+      </div>
+      <section class="section-block">
+        <div class="section-heading"><div><div class="eyebrow">HOW CAN WE HELP?</div><h2>What needs attention?</h2><p>Choose a service category to report an issue in your area.</p></div><button class="text-link" data-view="report">View all services <span>→</span></button></div>
+        <div class="category-grid">
+          <button class="category-card" data-category="Water & Sanitation"><span class="category-icon water">≈</span><strong>Water & Sanitation</strong><small>Leaks, drainage, water supply</small><span class="category-arrow">↗</span></button>
+          <button class="category-card" data-category="Roads & Streetlights"><span class="category-icon road">⌁</span><strong>Roads & Streetlights</strong><small>Potholes, lighting, road damage</small><span class="category-arrow">↗</span></button>
+          <button class="category-card" data-category="Waste Collection"><span class="category-icon waste">♻</span><strong>Waste Collection</strong><small>Garbage, litter, dumping</small><span class="category-arrow">↗</span></button>
+          <button class="category-card" data-category="Other Public Services"><span class="category-icon other">✳</span><strong>Other Public Services</strong><small>Other community concerns</small><span class="category-arrow">↗</span></button>
+        </div>
+      </section>
+      <section class="recent-section">
+        <div class="section-heading"><div><div class="eyebrow">TRANSPARENCY IN ACTION</div><h2>Recent service updates</h2><p>See how reports move toward resolution.</p></div><button class="text-link" data-view="track">Track your request <span>→</span></button></div>
+        <div id="recentRequests" class="recent-list"><div class="empty-state">No reports yet. Be the first to submit a service request.</div></div>
+      </section>
+    </section>
+
+    <section class="view page-view" id="view-auth">
+      <div class="page-title"><div class="eyebrow">WELCOME TO HUDUMALINK</div><h1>Access your account</h1><p>Sign in to manage your reports or create a citizen account.</p></div>
+      <div class="auth-layout">
+        <div class="auth-promo"><span class="promo-symbol">⌖</span><h2>Your voice can<br>improve your community.</h2><p>Submit service issues, receive a tracking number, and stay informed as work progresses.</p><div class="promo-check">✓ &nbsp; One place for your reports</div><div class="promo-check">✓ &nbsp; Clear status updates</div><div class="promo-check">✓ &nbsp; Citizen-focused service</div></div>
+        <div class="panel auth-panel">
+          <div class="tabs"><button class="tab active" id="loginTab">Sign in</button><button class="tab" id="registerTab">Create account</button></div>
+          <form id="loginForm" class="form-stack">
+            <label>Email address<input type="email" id="loginEmail" required placeholder="you@example.com" autocomplete="email"></label>
+            <label>Password<input type="password" id="loginPassword" required placeholder="Enter your password" autocomplete="current-password"></label>
+            <button class="btn btn-primary full-width" type="submit">Sign in <span>→</span></button>
+            <p class="form-hint">Demo admin: <strong>admin@hudumalink.test</strong> / <strong>Admin123!</strong></p>
+          </form>
+          <form id="registerForm" class="form-stack" hidden>
+            <label>Full name<input id="regName" required maxlength="100" placeholder="Your full name" autocomplete="name"></label>
+            <label>Email address<input type="email" id="regEmail" required placeholder="you@example.com" autocomplete="email"></label>
+            <label>Phone number <span class="optional">(optional)</span><input id="regPhone" type="tel" placeholder="+254 7XX XXX XXX" autocomplete="tel"></label>
+            <label>Password<input id="regPassword" type="password" required minlength="8" placeholder="At least 8 characters" autocomplete="new-password"></label>
+            <button class="btn btn-primary full-width" type="submit">Create account <span>→</span></button>
+            <p class="form-hint">Prototype only: account data is stored in this browser, not a secure server.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="view page-view" id="view-report">
+      <div class="page-title"><div class="eyebrow">MAKE YOURSELF HEARD</div><h1>Report a public service issue</h1><p>Share a few details so the right team can understand the problem.</p></div>
+      <div class="form-layout">
+        <form class="panel request-form form-stack" id="requestForm">
+          <div class="form-section-title"><span>01</span><div><h3>Issue details</h3><p>Tell us what needs attention.</p></div></div>
+          <label>Service category<select id="requestCategory" required><option value="">Select a category</option><option>Water & Sanitation</option><option>Roads & Streetlights</option><option>Waste Collection</option><option>Other Public Services</option></select></label>
+          <label>Location<input id="requestLocation" required maxlength="180" placeholder="e.g. estate, road, landmark or ward"></label>
+          <label>Description<textarea id="requestDescription" required minlength="10" maxlength="1500" rows="5" placeholder="Describe the issue, when you noticed it, and any useful details..."></textarea><small class="field-note">Please include at least 10 characters.</small></label>
+          <div class="upload-area"><label for="requestImage" class="upload-label"><span class="upload-symbol">↑</span><span><strong>Add a photo <em>(optional)</em></strong><small>JPG, PNG or WebP · maximum 2 MB</small></span><span class="upload-action">Choose file</span></label><input type="file" id="requestImage" accept="image/jpeg,image/png,image/webp" hidden><div id="imagePreview" class="image-preview"></div></div>
+          <button class="btn btn-primary btn-large full-width" type="submit">Submit service request <span>→</span></button>
+          <p class="privacy-note">By submitting, you confirm these details are accurate. Please don't include sensitive personal information.</p>
+        </form>
+        <aside class="side-info">
+          <div class="info-card"><span class="info-icon">◎</span><h3>What happens next?</h3><ol class="steps"><li><span>1</span><div><strong>We receive your report</strong><small>You'll get a unique tracking number.</small></div></li><li><span>2</span><div><strong>The issue is reviewed</strong><small>The request can be marked in progress.</small></div></li><li><span>3</span><div><strong>You track progress</strong><small>Check the latest status any time.</small></div></li></ol></div>
+          <div class="help-card"><span>Need assistance?</span><p>Make your description clear and include a nearby landmark if possible.</p><button class="text-link" data-view="help">View help centre →</button></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view page-view" id="view-track">
+      <div class="page-title"><div class="eyebrow">STAY IN THE LOOP</div><h1>Track a service request</h1><p>Enter your tracking number to see the latest status and report details.</p></div>
+      <form id="trackForm" class="track-search panel"><span class="search-icon">⌕</span><input id="trackingInput" placeholder="e.g. HBL-2026-123456" aria-label="Tracking number" required><button class="btn btn-primary" type="submit">Track request →</button></form>
+      <div id="trackResult" class="track-result"></div>
+      <div class="panel track-help"><div class="track-help-icon">i</div><div><strong>Where can I find my tracking number?</strong><p>It appears after you submit a report. Sign in and visit your dashboard to find your previous requests.</p></div><button class="text-link" data-view="auth">Sign in →</button></div>
+    </section>
+
+    <section class="view page-view" id="view-dashboard">
+      <div class="dashboard-top"><div class="page-title"><div class="eyebrow">SERVICE OPERATIONS</div><h1>Admin dashboard</h1><p>Review citizen reports and keep service delivery moving.</p></div><button class="btn btn-primary" data-view="report">＋ New request</button></div>
+      <div class="stats-grid dashboard-stats">
+        <div class="stat-card"><span class="stat-icon teal">▤</span><div><small>Total requests</small><strong id="adminTotal">0</strong></div></div>
+        <div class="stat-card"><span class="stat-icon amber">◷</span><div><small>Pending</small><strong id="adminPending">0</strong></div></div>
+        <div class="stat-card"><span class="stat-icon blue">↻</span><div><small>In progress</small><strong id="adminProgress">0</strong></div></div>
+        <div class="stat-card"><span class="stat-icon green">✓</span><div><small>Resolved</small><strong id="adminResolved">0</strong></div></div>
+      </div>
+      <div class="panel admin-table-panel">
+        <div class="table-toolbar"><div><h2>All service requests</h2><p>Update a status as work progresses.</p></div><div class="toolbar-actions"><input id="adminSearch" placeholder="Search requests..." aria-label="Search requests"><select id="statusFilter" aria-label="Filter by status"><option value="All">All statuses</option><option>Pending</option><option>In Progress</option><option>Resolved</option></select></div></div>
+        <div class="table-scroll"><table><thead><tr><th>Request</th><th>Category / location</th><th>Date</th><th>Status</th><th>Update status</th></tr></thead><tbody id="adminTableBody"></tbody></table></div>
+        <div id="adminEmpty" class="empty-state" hidden>No requests match your search.</div>
+      </div>
+      <p class="prototype-warning">Demo mode: changes are stored in this browser only. Use a secure backend and database before handling real citizen information.</p>
+    </section>
+
+    <section class="view page-view" id="view-help">
+      <div class="page-title"><div class="eyebrow">WE'RE HERE TO HELP</div><h1>Help centre</h1><p>Quick guidance for using HudumaLink.</p></div>
+      <div class="help-grid">
+        <article class="panel faq-card"><span class="faq-icon">＋</span><h3>How do I report an issue?</h3><p>Select “Report an issue”, choose the most relevant category, add a location and clear description, then submit. A tracking number will be created.</p></article>
+        <article class="panel faq-card"><span class="faq-icon">⌕</span><h3>How do I track my report?</h3><p>Open “Track a request” and enter the tracking number you received after submission.</p></article>
+        <article class="panel faq-card"><span class="faq-icon">◷</span><h3>What do the statuses mean?</h3><p><strong>Pending:</strong> awaiting review. <strong>In Progress:</strong> being worked on. <strong>Resolved:</strong> marked as completed.</p></article>
+        <article class="panel faq-card"><span class="faq-icon">♙</span><h3>Is this an official government service?</h3><p>No. HudumaLink is a demonstration project for a public service request system and is not an official government website.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="footer-main"><a class="brand footer-brand" href="#" data-view="home"><span class="brand-mark">H</span><span>Huduma<span class="brand-light">Link</span><small>PUBLIC SERVICE PORTAL</small></span></a><p>Small reports. Meaningful change.<br>Built for a more responsive community.</p></div><div class="footer-bottom"><span>© 2026 HudumaLink · Demonstration project</span><span>Not an official government service</span></div></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>vxfhc
+</html>
